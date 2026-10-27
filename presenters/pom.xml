@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>clean-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>presenters</artifactId>
+
+    <!-- Interface adapters: the presenters. Each one implements output boundaries of the
+         use-case ring and turns a response model into a view model, text for the
+         command line, the endpoint, and the window's status bar, rows of strings for
+         the window's tables and lists. It depends on the use-case ring alone, for the
+         boundaries it implements and the responses that come through them. It knows
+         no JavaFX, no HTTP server, and no console: a presenter decides what the words
+         are, and a view decides where they go. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+    </dependencies>
+</project>

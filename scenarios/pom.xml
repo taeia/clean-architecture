@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>clean-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>scenarios</artifactId>
+
+    <!-- A driving adapter: the scenario tests, in a module of their own as in Chapter 7.
+         They depend on the use-case circle for the nine input boundaries, the request
+         models, and the output boundaries their own presenter implements, on the
+         domain services ring because the test's configurator builds Lending and
+         Reserving, on the model for one value, Money, which the assertions write
+         amounts in, and on the in-memory adapters for the rest of the wiring. Not on
+         the presenters: a test is a view that reads numbers, and it brings its own. It
+         has no main code. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

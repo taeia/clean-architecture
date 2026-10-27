@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>clean-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>desktop</artifactId>
+
+    <!-- A driving adapter: the JavaFX window, Martin's outermost circle and the controller
+         just inside it, in one module. It depends on the use-case circle for the nine
+         input boundaries and the request models, on the presenters for the two it
+         shows, one for its status bar and one for its tables, and on the domain
+         services ring because its entry point is the configurator for this program,
+         which builds Lending and Reserving before it builds the use cases around them.
+         It does not depend on the model, because no domain object reaches the screen,
+         and no response model does either: the window sees rows and sentences. It
+         depends on the in-memory adapters because the same configurator chooses the
+         storage, the clock, and the mailbox, and on the HTTP endpoint, because it
+         starts that second driver inside this program, next to the window. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>presenters</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>library.desktop.MainWindow</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

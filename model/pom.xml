@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>clean-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>model</artifactId>
+
+    <!-- The centre of the onion: the domain model. The aggregates, the entities inside
+         them, the value objects, and the exception the model throws when it refuses.
+         It depends on nothing in the project and on no library, and because it lists
+         nothing, nothing in it can name a repository, a clock, or a service: the
+         compiler says so, which no package boundary in Chapter 8 could. JUnit is here
+         in test scope only, for the unit tests of single rules. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>clean-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>application</artifactId>
+
+    <!-- The use-case circle: one class per thing the library does, nine in all, each in a
+         package of its own with the input boundary a driver calls, the output boundary
+         a presenter implements, and the request and response models that cross them.
+         Beside them, flat, what every use case shares: the refusal, the two driven
+         ports only this circle calls, the notifier and the change signal, and the
+         lookups from names to aggregates. It depends on the domain services ring,
+         whose Lending and Reserving it asks to do the work, and on the model, whose
+         aggregates it finds, reads, and turns into responses. Maven would hand it the
+         model through the domain ring anyway; the pom says so because the code does. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+    </dependencies>
+</project>
